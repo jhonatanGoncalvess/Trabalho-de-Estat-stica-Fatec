@@ -1,0 +1,56 @@
+@import "../core/variables";
+
+@mixin ui-tabs($theme) {
+    $text-color: ui-if(map-get($theme, is-dark) == true, #FFF, #000);
+
+    ui-tabs {
+        .tabs {
+            .overflow {
+                .tab {
+                    color: rgba($text-color, 0.7);
+                    border-bottom: 2px solid transparent;
+
+                    &.selected {
+                        color: $text-color;
+                        border-bottom-color: $text-color;
+                    }
+                }
+
+                .indicator {
+                    background-color: $text-color;
+                }
+            }
+
+            .arrows {
+                .ui-button {
+                    color: $text-color;
+                }
+            }
+        }
+
+        &.primary {
+            .tabs {
+                .overflow {
+                    .tab {
+                        color: rgba($text-color, 0.7);
+
+                        &.selected {
+                            color: map_get($theme, primary-color);
+                            border-bottom-color: map_get($theme, primary-color);
+                        }
+                    }
+
+                    .indicator {
+                        background-color: map_get($theme, primary-color);
+                    }
+                }
+
+                .arrows {
+                    .ui-button {
+                        color: $text-color;
+                    }
+                }
+            }
+        }
+    }
+}

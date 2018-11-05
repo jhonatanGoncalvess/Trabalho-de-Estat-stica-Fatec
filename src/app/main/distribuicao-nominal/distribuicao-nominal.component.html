@@ -1,0 +1,102 @@
+<div class="ui-s840">
+  <ui-card class="elevate-on-toolbar">
+    <ui-toolbar class="flat">
+      <button class="ui-button flat icon" type="button" uiRipple (click)="_location.back()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+      <span class="title">Distribuição Nominal</span>
+    </ui-toolbar>
+    <ui-card-content>
+      <form #form="ngForm" class="ui-validate on-dirty on-submit">
+        <div class="ui-flex-container break-on-s840">
+          <ui-input-container>
+            <input id="media" #inputMedia="ngModel" type="number" [(ngModel)]="info.media" uiInput name="media"
+                   required>
+            <label for="media">Média</label>
+            <div class="ui-messages">
+              <div *ngIf="inputMedia.errors && inputMedia.dirty">
+                <div class="ui-message error" [hidden]="!inputMedia.pristine && !inputMedia.errors.required">
+                  Digite a média
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+          <ui-input-container>
+            <input id="dv" #inputDV="ngModel" type="number" [(ngModel)]="info.dv" uiInput name="dv" required>
+            <label for="dv">Desvio padrão</label>
+            <div class="ui-messages">
+              <div *ngIf="inputDV.errors && inputDV.dirty">
+                <div class="ui-message error" [hidden]="!inputDV.pristine && !inputDV.errors.required">
+                  Digite o desvio padrão
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+        </div>
+
+        <div class="ui-flex-container break-on-s840">
+          <ui-input-container>
+            <ui-select id="type"
+                       #inputType="ngModel"
+                       name="medidaSeparatriz"
+                       [(ngModel)]="info.type"
+                       [options]="selectTypes"
+                       value="id" label="nome"
+                       uiInput required></ui-select>
+            <label for="type">Tipo</label>
+            <div class="ui-messages">
+              <div *ngIf="inputType.errors && inputType.dirty">
+                <div class="ui-message error" [hidden]="!inputType.pristine && !inputType.errors.required">
+                  Selecione um tipo de intervalo
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+          <ui-input-container *ngIf="info.type === 1 || info.type === 3">
+            <input id="menor" #inputMenor="ngModel" type="number" [(ngModel)]="info.menor" uiInput name="menor"
+                   required>
+            <label for="menor">Menor que</label>
+            <div class="ui-messages">
+              <div *ngIf="inputMenor.errors && inputMenor.dirty">
+                <div class="ui-message error" [hidden]="!inputMenor.pristine && !inputMenor.errors.required">
+                  Digite o menor valor a ser pesquisado
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+          <ui-input-container *ngIf="info.type === 2 || info.type === 3">
+            <input id="maior" #inputMaior="ngModel" type="number" [(ngModel)]="info.maior" uiInput name="maior"
+                   required>
+            <label for="maior">Maior que</label>
+            <div class="ui-messages">
+              <div *ngIf="inputMaior.errors && inputMaior.dirty">
+                <div class="ui-message error" [hidden]="!inputMaior.pristine && !inputMaior.errors.required">
+                  Digite o maior valor a ser pesquisado
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+        </div>
+      </form>
+
+      <div *ngIf="info && info.response">
+        <ul class="ui-list">
+          <li class="ui-list-item multi-line">
+            <div class="line">
+              <div class="primary">Probalidade</div>
+              <div class="secondary">{{ info.response.message ? info.response.message : info.response | percent: '1.2-2'
+                }}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ui-card-content>
+  </ui-card>
+  <div style="height: 80px;"></div>
+  <div class="ui-fab-container">
+    <a class="ui-button accent fab" uiRipple (click)="onSubmit(form)">
+      <i class="material-icons">send</i>
+    </a>
+  </div>
+</div>

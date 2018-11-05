@@ -1,0 +1,71 @@
+@import "../../smn-ui/core/variables.scss";
+.menu-info {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 100px;
+  max-width: 200px;
+  &__header {
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+:host {
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    &__card {
+      width: 100%;
+      padding: 16px;
+    }
+
+    &__cards {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      background-color: transparent;
+      box-shadow: none;
+      &__card {
+        background-color: #F5F5F5;
+        padding: 16px 8px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        width: 100%;
+        margin: 0 8px;
+        &__title {
+          text-align: center;
+          font-size: 14px;
+          font-weight: 500;
+          opacity: 0.87;
+          padding-bottom: 8px;
+          color: rgba(0,0,0,0.64);
+        }
+
+        &__subtitle {
+          text-align: center;
+          font-size: 16px;
+          color: rgba(0,0,0,0.87);
+        }
+      }
+    }
+
+  }
+}
+
+@include mobile() {
+  :host {
+    .content {
+      &__card {
+        width: 100%;
+      }
+      &__cards {
+        flex-wrap: wrap;
+        &__card {
+          width: 100%;
+          margin: 8px;
+        }
+      }
+    }
+  }
+}

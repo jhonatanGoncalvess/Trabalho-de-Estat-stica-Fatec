@@ -1,0 +1,127 @@
+<div class="ui-s840">
+  <ui-card class="elevate-on-toolbar">
+    <ui-toolbar class="flat">
+      <button class="ui-button flat icon" type="button" uiRipple (click)="_location.back()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+      <span class="title">Distribuição binomial</span>
+    </ui-toolbar>
+    <ui-card-content>
+      <form #form="ngForm" class="ui-validate on-dirty on-submit">
+
+        <div class="ui-flex-container break-on-s840">
+
+          <ui-input-container>
+            <input id="totalProb" #totalProb="ngModel" type="number" [(ngModel)]="info.totalProb" uiInput
+                   name="totalProb" required>
+            <label for="totalProb">Total de probabilidades</label>
+            <div class="ui-messages">
+              <div *ngIf="totalProb.errors && totalProb.dirty">
+                <div class="ui-message error" [hidden]="!totalProb.pristine && !totalProb.errors.required">
+                  Digite o Total de probabilidades
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+
+          <ui-input-container>
+            <input id="probSucess" #probSucess="ngModel" type="number" [(ngModel)]="info.probSucess" uiInput
+                   name="probSucess" required>
+            <label for="probSucess">Probabilidade de Sucesso</label>
+            <div class="ui-messages">
+              <div *ngIf="probSucess.errors && probSucess.dirty">
+                <div class="ui-message error" [hidden]="!probSucess.pristine && !probSucess.errors.required">
+                  Digite o valor de "Probabilidade de Sucesso"
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+
+          <ui-input-container>
+            <input id="probFracasso" #probFracasso="ngModel" type="number" [(ngModel)]="info.probFracasso" uiInput
+                   name="probFracasso"
+                   required>
+            <label for="probFracasso">Probabilidade de Fracasso</label>
+            <div class="ui-messages">
+              <div *ngIf="probFracasso.errors && probFracasso.dirty">
+                <div class="ui-message error" [hidden]="!probFracasso.pristine && !probFracasso.errors.required">
+                  Digite o valor de "Probabilidade de Fracasso"
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+
+        </div>
+
+        <div class="ui-flex-container break-on-s840">
+          <ui-input-container>
+            <input id="totalSucess" #totalSucess="ngModel" type="number" [(ngModel)]="info.totalSucess" uiInput
+                   name="totalSucess" required>
+            <label for="totalSucess">Total de sucessos desejados</label>
+            <div class="ui-messages">
+              <div *ngIf="totalSucess.errors && totalSucess.dirty">
+                <div class="ui-message error" [hidden]="!totalSucess.pristine && !totalSucess.errors.required">
+                  Digite o Total de sucessos desejados
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+
+          <ui-input-container>
+            <input id="pelomenos" #pelomenos="ngModel" type="number" [(ngModel)]="info.pelomenos" uiInput
+                   name="pelomenos" required>
+            <label for="pelomenos">Pelo Menos</label>
+            <div class="ui-messages">
+              <div *ngIf="pelomenos.errors && pelomenos.dirty">
+                <div class="ui-message error" [hidden]="!pelomenos.pristine && !pelomenos.errors.required">
+                  Digite o valor de "Pelo Menos"
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+
+          <ui-input-container>
+            <input id="maximo" #maximo="ngModel" type="number" [(ngModel)]="info.maximo" uiInput name="maximo" required>
+            <label for="maximo">No Máximo</label>
+            <div class="ui-messages">
+              <div *ngIf="maximo.errors && maximo.dirty">
+                <div class="ui-message error" [hidden]="!maximo.pristine && !maximo.errors.required">
+                  Digite o valor de "No Máximo"
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+        </div>
+
+      </form>
+    </ui-card-content>
+
+    <div *ngIf="response">
+      <ui-card-title>Resultado</ui-card-title>
+      <ui-data-table class="responsive">
+        <tbody>
+        <tr>
+          <th>Probabilidade = {{info.totalSucess}}</th>
+          <th>De {{info.pelomenos}} á {{info.totalProb}}></th>
+          <th>Até {{info.maximo}}</th>
+        </tr>
+        <tr>
+          <td>{{ response.probabilidadeTotal }}</td>
+          <td>{{ response.pelomenos }}</td>
+          <td>{{ response.maximo }}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+      </ui-data-table>
+    </div>
+
+  </ui-card>
+
+  <div class="ui-fab-container">
+    <a class="ui-button accent fab" uiRipple (click)="onSubmit(form, info)">
+      <i class="material-icons">send</i>
+    </a>
+  </div>
+</div>

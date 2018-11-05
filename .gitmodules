@@ -1,0 +1,3 @@
+[submodule "statistics-web-dist"]
+	path = statistics-web-dist
+	url = https://github.com/gabrielferreir/statistics-web-dist

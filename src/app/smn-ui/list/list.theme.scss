@@ -1,0 +1,90 @@
+@import "../core/variables";
+
+@mixin ui-list($theme) {
+    $ripple-color: ui-if(map-get($theme, is-dark) == true, rgba(255, 255, 255, 0.1), rgba(33, 33, 33, 0.1));
+
+    .ui-list {
+        li,
+        .ui-list-item {
+            color: map_get($theme, primary-text-color);
+
+            .fill {
+                fill: map_get($theme, primary-text-color);
+            }
+
+            &.subheader {
+                color: map_get($theme, secondary-text-color);
+
+                .fill {
+                    fill: map_get($theme, secondary-text-color);
+                }
+            }
+
+            .arrow,
+            .icon:not(.ui-button),
+            &.subheader,
+            .avatar,
+            .secondary {
+                color: map_get($theme, secondary-text-color);
+
+                .fill {
+                    fill: map_get($theme, secondary-text-color);
+                }
+            }
+
+            .avatar {
+                background-color: ui_if(map_get($theme, is-dark), ui-color('grey', '700'), ui-color('grey', '300'));
+            }
+
+            &.disabled {
+                color: map_get($theme, disabled-text-color);
+
+                .fill {
+                    fill: map_get($theme, disabled-text-color);
+                }
+            }
+
+            &.active {
+                &,
+                .icon:not(.ui-button) {
+                    color: map_get($theme, primary-color);
+
+                    .fill {
+                        fill: map_get($theme, primary-color);
+                    }
+                }
+
+                &.accent {
+                    &,
+                    .icon:not(.ui-button) {
+                        color: map_get($theme, accent-color);
+
+                        .fill {
+                            fill: map_get($theme, accent-color);
+                        }
+                    }
+                }
+            }
+
+            &:not(.subheader) {
+                &:not(.no-ripple):not([uiRipple]):active,
+                &:not(.no-ripple)[ng-reflect-ripple-disable="true"]:active {
+                    background-color: $ripple-color;
+                }
+            }
+        }
+
+        &.no-active {
+            li,
+            .ui-list-item {
+                &:not(.subheader) {
+                    &:not(.no-ripple):not([uiRipple]):active,
+                    &:not(.no-ripple)[ng-reflect-ripple-disable="true"]:active {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+
+}

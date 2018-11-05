@@ -1,0 +1,119 @@
+<div class="ui-s840">
+  <ui-card class="elevate-on-toolbar">
+    <ui-toolbar class="flat">
+      <button class="ui-button flat icon" type="button" uiRipple (click)="_location.back()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+      <span class="title">Entrada de dados</span>
+    </ui-toolbar>
+    <ui-card-content>
+      <form #form="ngForm" class="ui-validate on-dirty on-submit">
+        <ui-input-container>
+          <input id="title" #title="ngModel" type="text" [(ngModel)]="info.title" uiInput name="title" required>
+          <label for="title">Titulo</label>
+          <div class="ui-messages">
+            <div *ngIf="title.errors && title.dirty">
+              <div class="ui-message error" [hidden]="!title.pristine && !title.errors.required">
+                Digite o titulo
+              </div>
+            </div>
+          </div>
+        </ui-input-container>
+        <div class="ui-flex-container break-on-s840">
+          <ui-input-container>
+            <ui-select id="medidaSeparatriz"
+                       #medidaSeparatriz="ngModel"
+                       name="medidaSeparatriz"
+                       [(ngModel)]="info.medidaSeparatriz"
+                       [options]="selectMedidaSeparatriz"
+                       value="id" label="nome"
+                       uiInput></ui-select>
+            <label for="medidaSeparatriz">
+              Medida Separatriz
+            </label>
+          </ui-input-container>
+          <ui-input-container>
+            <input id="valueMedidaSeparatriz"
+                   #valueMedidaSeparatriz="ngModel"
+                   type="number"
+                   [(ngModel)]="info.valueMedidaSeparatriz"
+                   uiInput
+                   [min]="1"
+                   [max]="(info.medidaSeparatriz === 4) ? 4 : (info.medidaSeparatriz === 5) ? 5 : (info.medidaSeparatriz === 10) ? 10 : 100"
+                   name="valueMedidaSeparatriz">
+            <label for="valueMedidaSeparatriz">Valor</label>
+          </ui-input-container>
+        </div>
+        <div class="ui-flex-container break-on-s840">
+          <ui-option-container class="v-space-4 b-space-16">
+            <ui-option class="primary">
+              <input name="legenda" type="checkbox" [(ngModel)]="info.ordinal" [checked]="info.ordinal">
+              <span>Ordinal</span>
+            </ui-option>
+          </ui-option-container>
+
+          <ui-option-container class="v-space-4 b-space-16">
+            <ui-option class="primary">
+              <input name="legenda" type="checkbox" [(ngModel)]="info.amostra" [checked]="info.amostra">
+              <span>Amostra</span>
+            </ui-option>
+          </ui-option-container>
+          <ui-input-container>
+            <ui-select id="sufixo" #sufixo="ngModel" name="sufixo" [(ngModel)]="info.sufixo" [options]="selectSufixo"
+                       value="nome" label="nome"
+                       uiInput></ui-select>
+            <label for="sufixo">
+              Sufixo
+            </label>
+          </ui-input-container>
+          <ui-input-container>
+            <ui-select id="tipoDeVariavel" #tipoDeVariavel="ngModel" name="tipoDeVarivel"
+                       [(ngModel)]="info.tipoDeVariavel" [options]="selectTipoVariavel" value="id" label="nome"
+                       uiInput></ui-select>
+            <label for="tipoDeVariavel">
+              Tipo de variavel
+            </label>
+          </ui-input-container>
+        </div>
+        <ui-chips>
+          <ui-input-container>
+            <input id="dado" #dado="ngModel" type="text" [(ngModel)]="info.currentDado" uiInput name="dado"
+                   (focus)="focus = DataInsertHasFocus;" (blur)="focus = DataInsertHasFocus"
+                   [persistPlaceholder]="DataInsertHasFocus" placeholder="Pressione enter para inserir"
+                   (keydown.enter)="insertData(info.currentDado)">
+            <label for="dado">Dado</label>
+            <div class="icon">
+              <button class="ui-button icon flat" type="button" (click)="openFile()"
+                      uiRipple>
+                <i class="material-icons">cloud_upload</i>
+              </button>
+              <input class="openfile" style="display: none;" name="file" type="file" [(ngModel)]="info.file"
+                     (change)="readFile($event.target)">
+            </div>
+          </ui-input-container>
+
+          <div class="container-chips">
+            <div *ngFor="let dadoInserido of info.content; let index = index" [attr.data-value]="index"
+                 class="ui-chip js-chips-dado">
+              <div class="icon chip-cont">
+                {{ dadoInserido.qtd }}
+              </div>
+              {{ dadoInserido.group }} {{ info.sufixo && info.sufixo !== 'Sem sufixo' ? ' ' + info.sufixo : '' }}
+              <div class="close ripple-rounded" uiRipple (click)="removeData(index)">
+                <i class="material-icons">add_circle</i>
+              </div>
+            </div>
+          </div>
+        </ui-chips>
+      </form>
+    </ui-card-content>
+  </ui-card>
+  <div class="ui-fab-container">
+    <a class="ui-button accent fab" uiRipple (click)="onSubmit(form)">
+      <i class="material-icons">send</i>
+    </a>
+  </div>
+
+</div>
+
+<br><br><br><br><br>

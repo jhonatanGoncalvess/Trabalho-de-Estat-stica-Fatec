@@ -1,0 +1,91 @@
+<div class="ui-s840">
+  <ui-card class="elevate-on-toolbar">
+    <ui-toolbar class="flat">
+      <button class="ui-button flat icon" type="button" uiRipple (click)="_location.back()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+      <span class="title">Correlação/Regressão</span>
+      <div class="align-right">
+        <button class="ui-button icon flat" type="button" (click)="openFile()"
+                uiRipple>
+          <i class="material-icons">cloud_upload</i>
+        </button>
+        <input class="openfile" style="display: none;" name="file" type="file" [(ngModel)]="info.file"
+               (change)="readFile($event.target)">
+      </div>
+    </ui-toolbar>
+    <ui-card-content>
+      <form #form="ngForm" class="ui-validate on-dirty on-submit">
+        <div class="ui-flex-container break-on-s840">
+          <ui-input-container>
+            <input id="x" #x="ngModel" type="number" [(ngModel)]="info.x" uiInput name="x" required>
+            <label for="x">X</label>
+            <div class="ui-messages">
+              <div *ngIf="x.errors && x.dirty">
+                <div class="ui-message error" [hidden]="!x.pristine && !x.errors.required">
+                  Digite o X
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+          <ui-input-container>
+            <input id="y" #y="ngModel" type="number" [(ngModel)]="info.y" uiInput name="y" required
+                   (keydown.enter)="addInfo(form, info)">
+            <label for="y">Y</label>
+            <div class="icon">
+              <button class="ui-button icon flat" type="button" (click)="addInfo(form, info)"
+                      uiRipple>
+                <i class="material-icons">add</i>
+              </button>
+            </div>
+            <div class="ui-messages">
+              <div *ngIf="y.errors && y.dirty">
+                <div class="ui-message error" [hidden]="!y.pristine && !y.errors.required">
+                  Digite o Y
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+        </div>
+      </form>
+    </ui-card-content>
+
+
+    <ui-data-table class="responsive">
+      <tbody>
+      <tr>
+        <th>Xs</th>
+        <th>Ys</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let item of list; let index = index">
+        <td data-title="Xs">{{item.x}}</td>
+        <td data-title="Ys"> {{item.y}}</td>
+        <td data-title="Excluir" class="align-right">
+          <div class="icon">
+            <button class="ui-button icon flat error" type="button" (click)="removeInfo(index)"
+                    uiRipple>
+              <i class="material-icons">clear</i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="list && !list.length">
+        <td colspan="3" style="text-align: center;">Não existem informações</td>
+      </tr>
+      </tbody>
+
+      <tfoot>
+      </tfoot>
+
+    </ui-data-table>
+  </ui-card>
+
+  <div style="height: 80px;"></div>
+
+  <div class="ui-fab-container">
+    <a class="ui-button accent fab" uiRipple (click)="onSubmit(list)">
+      <i class="material-icons">send</i>
+    </a>
+  </div>
+</div>

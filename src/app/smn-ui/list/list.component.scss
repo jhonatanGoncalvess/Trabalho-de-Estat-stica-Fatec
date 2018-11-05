@@ -1,0 +1,179 @@
+.ui-list {
+    padding: 8px 0;
+
+    li,
+    .ui-list-item {
+        min-height: 48px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.87);
+        font-weight: 500;
+        width: 100%;
+        user-select: none;
+        &:not(a) {
+            cursor: default;
+        }
+
+        &.subheader {
+            color: rgba(0, 0, 0, 0.54);
+        }
+
+        &.disabled {
+            color: rgba(0, 0, 0, 0.44);
+        }
+
+        .icon:not(.ui-button) {
+            display: flex;
+            align-items: center;
+            width: 40px;
+            margin-right: 16px;
+            color: rgba(0, 0, 0, 0.54);
+            user-select: none;
+        }
+
+        .avatar {
+            user-select: none;
+            width: 40px;
+            margin-right: 16px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: ui-color('grey');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        &.multi-line {
+            .lines {
+                padding: 19px 0;
+            }
+
+            .avatar {
+                align-self: flex-start;
+                margin-top: 16px;
+            }
+
+            .primary {
+                font-weight: 400;
+                font-size: 16px;
+            }
+            .secondary {
+                font-weight: 400;
+                font-size: 14px;
+            }
+        }
+
+        .action {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            max-width: 56px;
+            margin-right: -2px;
+
+            &.left {
+                margin-left: -2px;
+                margin-right: 32px;
+            }
+
+            .ui-switch {
+                margin-right: 9px;
+            }
+
+            .arrow {
+                margin-right: 10px;
+            }
+        }
+
+        .arrow {
+            display: flex;
+            align-items: flex-end;
+            margin-left: auto;
+            max-width: 56px;
+            margin-right: -2px;
+
+            user-select: none;
+            //position: absolute;
+            color: rgba(0, 0, 0, 0.54);
+            //right: 12px;
+            //top: 50%;
+            //margin-top: -12px;
+            i {
+                transition: transform 280ms ui-easing('deceleration');
+            }
+        }
+
+        &,
+        .icon:not(.ui-button) {
+            transition: color 280ms ui-easing('deceleration');
+        }
+
+        transition: background-color 280ms ui-easing('deceleration');
+
+        &.expanded:not(.nothing) {
+            background-color: rgba(0, 0, 0, 0.025);
+            font-weight: 500;
+            .arrow i {
+                transform: rotate(-180deg);
+            }
+        }
+    }
+
+    @mixin paddingsleft($test) {
+        .ui-list-item-group {
+            li,
+            .ui-list-item:not(.nothing) {
+                padding-left: #{$test}px !important;
+                &.expanded {
+                    font-weight: 500;
+                }
+            }
+
+            @content;
+        }
+    }
+
+    .ui-list-item-group {
+        li,
+        .ui-list-item {
+            font-weight: 400;
+            padding-left: 37px !important;
+            &.expanded:not(.nothing) {
+                font-weight: 500;
+            }
+        }
+
+        @include paddingsleft(53) {
+            @include paddingsleft(69) {
+                @include paddingsleft(85) {
+                    @include paddingsleft(101) {
+                    }
+                }
+            }
+        }
+
+        overflow: hidden;
+
+        height: 0;
+
+        transition: height 280ms ui-easing('deceleration'),
+        background-color 280ms ui-easing('deceleration'),
+        opacity 280ms ui-easing('deceleration');
+
+        //opacity: 0;
+
+        &.expanded {
+            background-color: rgba(0, 0, 0, 0.025);
+            opacity: 1;
+
+            li,
+            .ui-list-item {
+                font-weight: 400;
+            }
+        }
+    }
+}

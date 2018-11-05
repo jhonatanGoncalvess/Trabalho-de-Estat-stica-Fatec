@@ -1,0 +1,21 @@
+<section class="container">
+  <section class="container__title" *ngIf="title">{{ title }}</section>
+  <div class="container__subtitle" *ngIf="subtitle">{{ subtitle }}</div>
+  <section class="container__content">
+    <svg class="full-graphic"></svg>
+
+    <section class="legends" *ngIf="legend">
+      <section class="legends__legend" *ngFor="let leg of legend; let index = index">
+        <div class="legends__legend__color"
+             [ngStyle]="{'background-color': config.colors[index] ? config.colors[index] : '#CDCDCD' }">
+        </div>
+        {{ leg }}
+      </section>
+    </section>
+  </section>
+</section>
+
+<ui-menu class="menu-info" #menuInfo>
+  <ng-content></ng-content>
+</ui-menu>
+

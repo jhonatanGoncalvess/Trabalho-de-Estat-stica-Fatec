@@ -1,0 +1,39 @@
+@import "../core/variables";
+
+@mixin ui-chip($theme) {
+    $color: ui-if(map-get($theme, is-dark) == true, ui-color('grey', '700'), ui-color('grey', '300'));
+    $text-color: ui-if(map-get($theme, is-dark) == true, #FFF, #000);
+
+    .ui-chip {
+        background-color: rgba($color, 0.75);
+        color: $text-color;
+
+        .ui-ripple-wave {
+            background-color: rgba($text-color, 0.1);
+        }
+
+        &:link {
+            &:hover, &:active {
+                background-color: $color;
+            }
+        }
+
+        &.marked {
+            background-color: map_get($theme, primary-color);
+            color: ui-text-color(map_get($theme, primary), map_get($theme, primary-hue));
+
+            .ui-ripple-wave {
+                background-color: rgba(ui-text-color(map_get($theme, primary), map_get($theme, primary-hue)), 0.1);
+            }
+
+            &.accent-marking {
+                background-color: map_get($theme, accent-color);
+                color: ui-text-color(map_get($theme, accent), map_get($theme, accent-hue));
+
+                .ui-ripple-wave {
+                    background-color: rgba(ui-text-color(map_get($theme, accent), map_get($theme, accent-hue)), 0.1);
+                }
+            }
+        }
+    }
+}

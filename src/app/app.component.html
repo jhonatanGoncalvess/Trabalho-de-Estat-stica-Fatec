@@ -1,0 +1,42 @@
+<nav class="statistics-toolbar">
+  <div class="statistics-toolbar__logo">
+  My Statistics
+  </div>
+  <ul class="statistics-toolbar__list">
+    <li class="statistics-toolbar__list-item" routerLink='/' [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+      <span class="statistics-toolbar__title">Home</span>
+    </li>
+    <li class="statistics-toolbar__list-item" routerLink='/insert' routerLinkActive="active">
+      <span class="statistics-toolbar__title">Estatística Discreta</span>
+    </li>
+    <li class="statistics-toolbar__list-item" routerLink='/correlacao-regressao' routerLinkActive="active">
+      <span class="statistics-toolbar__title">Correlação/Regressão</span>
+    </li>
+    <li class="statistics-toolbar__list-item isDrop">
+      <span class="statistics-toolbar__title no-border">Distribuições <i class="material-icons">keyboard_arrow_down</i></span>
+      <ul class="statistics-toolbar__sub-list">
+        <li class="statistics-toolbar__list-item" routerLink='/distribuicao-uniforme' routerLinkActive="active">
+          <span class="statistics-toolbar__title no-border">Distribuição uniforme</span>
+        </li>
+        <li class="statistics-toolbar__list-item" routerLink='/distribuicao-nominal' routerLinkActive="active">
+          <span class="statistics-toolbar__title no-border">Distribuição nominal</span>
+        </li>
+        <li class="statistics-toolbar__list-item" routerLink='/distribuicao-binomial' routerLinkActive="active">
+          <span class="statistics-toolbar__title no-border">Distribuição binomial</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!--<div class="ui-nav-drawer-overflow">-->
+<!--<div class="ui-list">-->
+<!--<a class="ui-list-item" uiRipple routerLink='/'>Home</a>-->
+<!--<a class="ui-list-item" uiRipple routerLink='/insert'>Estatística discreta</a>-->
+<!--<a class="ui-list-item" uiRipple routerLink='/correlacao-regressao'>Correlação/Regressão</a>-->
+<!--<a class="ui-list-item" uiRipple routerLink='/distribuicao-uniforme'>Distribuição uniforme</a>-->
+<!--<a class="ui-list-item" uiRipple routerLink='/distribuicao-nominal'>Distribuição nominal</a>-->
+<!--<a class="ui-list-item" uiRipple routerLink='/distribuicao-binomial'>Distribuição binomial</a>-->
+<!--</div>-->
+<!--</div>-->
+<router-outlet></router-outlet>

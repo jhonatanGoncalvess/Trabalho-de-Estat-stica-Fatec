@@ -1,0 +1,46 @@
+@import '../../smn-ui/core/variables';
+
+.input-legend {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  ui-input-container {
+    max-width: 200px;
+  }
+}
+
+.chip-cont {
+  background-color: #2196f3;
+  color: #FFF;
+}
+
+@include mobile() {
+  .input-legend {
+    ui-input-container {
+      max-width: 100%;
+    }
+  }
+
+}
+
+// DRAG-DROP
+
+.container-chips {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.drag-drop-shadow {
+  display: inline-flex;
+  background-color: #F00;
+  height: 32px;
+  border-radius: 16px;
+  align-items: center;
+  padding: 0 16px;
+  cursor: default;
+  user-select: none;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}

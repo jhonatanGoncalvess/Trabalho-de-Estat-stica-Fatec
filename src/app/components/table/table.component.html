@@ -1,0 +1,24 @@
+<ui-card class="elevate-on-toolbar">
+  <ui-toolbar class="flat">
+    <span class="title">{{ title }}</span>
+  </ui-toolbar>
+  <ui-data-table class="responsive">
+    <tbody>
+    <tr>
+      <th uiDataTableOrderBy>Variavel</th>
+      <th uiDataTableOrderBy class="align-right">Frequencia</th>
+      <th uiDataTableOrderBy class="align-right">FR%</th>
+      <th uiDataTableOrderBy class="align-right">F</th>
+      <th uiDataTableOrderBy class="align-right">F%</th>
+    </tr>
+    <tr *ngFor="let item of data">
+      <td data-title="Variavel">{{item.group}}</td>
+      <td data-title="Frequencia" class="align-right"> {{item.qtd}}</td>
+      <td data-title="FR%" class="align-right"> {{item.percent | percent: '1.2-2' }}</td>
+      <td data-title="F" class="align-right"> {{item.fac}}</td>
+      <td data-title="F%" class="align-right"> {{item.facP | percent: '1.2-2' }}</td>
+    </tr>
+    </tbody>
+    <tfoot></tfoot>
+  </ui-data-table>
+</ui-card>

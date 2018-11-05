@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import "app/smn-ui/core/core";
+@import "app/smn-ui/core/theme";
+
+$primary: (color: 'blue-grey', hue: '900');
+$accent: (color: 'grey', hue: '50');
+
+$theme: ui-theme($primary, $accent);
+$theme-dark: ui-theme($primary, $accent, true);
+
+@include ui-core();
+
+@include ui-build-theme($theme);
+
+.dark {
+  @include ui-build-theme($theme-dark);
+}

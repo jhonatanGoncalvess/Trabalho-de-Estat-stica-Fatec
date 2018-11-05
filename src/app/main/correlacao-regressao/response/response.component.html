@@ -1,0 +1,96 @@
+<div class="ui-s840">
+  <ui-card class="elevate-on-toolbar">
+    <ui-toolbar class="flat">
+      <button class="ui-button flat icon" type="button" uiRipple (click)="_location.back()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+      <span class="title">Correlação/Regressão</span>
+    </ui-toolbar>
+    <ui-card-content>
+      <form #form="ngForm" class="ui-validate on-dirty on-submit">
+        <div class="ui-flex-container break-on-s840">
+          <ui-input-container>
+            <ui-select id="letter" #letter="ngModel" name="letter" [(ngModel)]="calc.letter" [options]="letters"
+                       value="id" label="nome"
+                       uiInput required
+                      (ngModelChange)="focusValor()"
+            ></ui-select>
+            <label for="letter">
+              Qual valor você deseja descobrir?
+            </label>
+            <div class="ui-messages">
+              <div *ngIf="letter.errors && letter.dirty">
+                <div class="ui-message error" [hidden]="!letter.pristine && !letter.errors.required">
+                  Selecione uma letra
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+          <ui-input-container>
+            <input id="value" #value="ngModel" type="number" [(ngModel)]="calc.value" uiInput name="value" required
+                   (keydown.enter)="onSubmit(form, calc.letter, calc.value)">
+            <label for="value">Valor</label>
+            <div class="icon">
+              <button class="ui-button icon flat" type="button" (click)="onSubmit(form, calc.letter, calc.value)"
+                      uiRipple>
+                <i class="material-icons">add</i>
+              </button>
+            </div>
+            <div class="ui-messages">
+              <div *ngIf="value.errors && value.dirty">
+                <div class="ui-message error" [hidden]="!value.pristine && !value.errors.required">
+                  Digite o Valor
+                </div>
+              </div>
+            </div>
+          </ui-input-container>
+        </div>
+      </form>
+    </ui-card-content>
+  </ui-card>
+
+  <ui-card style="margin-top: 16px;">
+    <ui-card-title>Resultados</ui-card-title>
+    <ui-card-content>
+
+      <ul class="ui-list">
+        <li class="ui-list-item multi-line" *ngIf="calc.result">
+          <div class="line">
+            <div class="primary full">Valor atual</div>
+            <div class="secondary full">{{ calc.result }}</div>
+          </div>
+        </li>
+
+        <li class="ui-list-item multi-line">
+          <div class="line">
+            <div class="primary full">Correlação</div>
+            <div class="secondary full">{{ calc.correlacao | percent: '1.2-2' }}</div>
+          </div>
+        </li>
+
+        <li class="ui-list-item multi-line">
+          <div class="line">
+            <div class="primary full">Nivel</div>
+            <div class="secondary full">{{ calc.nivel }}</div>
+          </div>
+        </li>
+
+        <li class="ui-list-item multi-line">
+          <div class="line">
+            <div class="primary full">Equação</div>
+            <div class="secondary full">Y = {{ calc.B }} * X + {{ calc.A }}</div>
+          </div>
+        </li>
+
+      </ul>
+
+    </ui-card-content>
+  </ui-card>
+
+  <ui-card style="margin-top: 16px;">
+    <ui-card-content>
+      <canvas id="graphic"></canvas>
+    </ui-card-content>
+  </ui-card>
+  <div style="height: 80px;"></div>
+</div>
