@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {GraphicService} from './graphic.service';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { GraphicService } from './graphic.service';
 
 @Component({
   selector: 'smn-graphic',
@@ -10,9 +10,9 @@ export class GraphicCollumnComponent implements OnInit, AfterViewInit {
   drawer = {
     rendered: false,
     padding: 16,
-    maxValue: null, // PRECISA SER SETADO,
-    elementsForItem: null, // PRECISA SER SETADO
-    sizeCollum: null, // PRECISA SER SETADO
+    maxValue: null,
+    elementsForItem: null,
+    sizeCollum: null,
     sizeLabel: 32,
   };
 
@@ -30,8 +30,8 @@ export class GraphicCollumnComponent implements OnInit, AfterViewInit {
   @ViewChild('menuInfo') menuInfo;
 
   constructor(private elementRef: ElementRef,
-              private renderer2: Renderer2,
-              private graphicService: GraphicService) {
+    private renderer2: Renderer2,
+    private graphicService: GraphicService) {
     this.config = {};
   }
 
@@ -57,7 +57,7 @@ export class GraphicCollumnComponent implements OnInit, AfterViewInit {
   }
 
   generate(info) {
-    // document.querySelector('.full-graphic').innerHTML = '';
+
 
     document.querySelector('.full-graphic') ?
       document.querySelector('.full-graphic').innerHTML = '' : null;
@@ -116,12 +116,12 @@ export class GraphicCollumnComponent implements OnInit, AfterViewInit {
   }
 
   generateCollum(info, index, color?) {
-    // Config<Object> | color<Array><string>
+    
     const height = this.content.querySelector('.full-graphic__graphic').height.baseVal.value;
     const group = this.createElementNS('g');
     const svg = this.createElementNS('svg');
 
-    this.setAttribute(svg, {'x': this.drawer.sizeCollum + (index * this.drawer.sizeCollum * (this.drawer.elementsForItem + this.config.noSpace))});
+    this.setAttribute(svg, { 'x': this.drawer.sizeCollum + (index * this.drawer.sizeCollum * (this.drawer.elementsForItem + this.config.noSpace)) });
     this.renderer2.appendChild(group, svg);
 
     info.forEach((value, i) => {
@@ -154,12 +154,12 @@ export class GraphicCollumnComponent implements OnInit, AfterViewInit {
   calculateQtdSpaces(info) {
     let acm = 0;
     info.forEach((item) => {
-      acm += item.value.length + this.config.noSpace; // +1 === espaço entre as informações
+      acm += item.value.length + this.config.noSpace;
     });
 
     const noSpace = this.config.noSpace ? 0 : 2;
 
-    return acm + noSpace; // +1 === Espaço no começo do grafico
+    return acm + noSpace; 
   }
 
   calculateIndices(max) {
@@ -182,10 +182,10 @@ export class GraphicCollumnComponent implements OnInit, AfterViewInit {
     };
     this.setAttribute(svg, svgAttributes);
 
-    // CONFIGS
+
     const color = config && config.color ? config.color : '#000';
 
-    // LABELS VERTICAIS
+  
     indices.forEach((indice) => {
       const textV = this.createElementNS('text');
       const y = this.calculatePosition(
@@ -227,7 +227,7 @@ export class GraphicCollumnComponent implements OnInit, AfterViewInit {
 
 
     info.forEach((item, index) => {
-      const pontoInicial = this.drawer.sizeCollum + (index * this.drawer.sizeCollum * (this.drawer.elementsForItem + this.config.noSpace ));
+      const pontoInicial = this.drawer.sizeCollum + (index * this.drawer.sizeCollum * (this.drawer.elementsForItem + this.config.noSpace));
       const x = pontoInicial + (this.drawer.sizeCollum * this.drawer.elementsForItem / 2);
 
       const textH = this.createElementNS('text');
@@ -247,7 +247,7 @@ export class GraphicCollumnComponent implements OnInit, AfterViewInit {
   }
 
   setMaxValue(info) {
-    // VAMOS MAXIMO NA VERTICAL
+
     const numbers = [];
     info.forEach((item) => {
       item.value.forEach((value) => {
@@ -289,7 +289,7 @@ export class GraphicCollumnComponent implements OnInit, AfterViewInit {
   setAttribute(el, attributes) {
     const keys = Object.keys(attributes);
     keys.forEach((key) => {
-        el.setAttribute(key, attributes[key].toString());
+      el.setAttribute(key, attributes[key].toString());
     });
   }
 

@@ -95,11 +95,7 @@ export class CorrelacaoRegressaoService {
   }
 
   regressaoB(n, X, Y, A) {
-    /* A FUNÇÂO RECEBE OS VALORES AO CONTRARIO
-      CONST _X = X / n;
-      CONST _T = Y / n;
-      ISSO SERIA O CORRETO
-     */
+  
     const _X = Y / n;
     const _Y = X / n;
     return _Y - A * _X;

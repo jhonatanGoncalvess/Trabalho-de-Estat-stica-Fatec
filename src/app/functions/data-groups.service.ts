@@ -106,7 +106,7 @@ export class DataGroupsService {
         }
       });
 
-      // CASO NÂO TENHA NENHUM ELEMENTO NO GRUPO
+
       if (!temp.length) {
         temp = [{group: {id: group.id, qtd: 0, percent: 0}}];
       }
