@@ -4,7 +4,7 @@
       <button class="ui-button flat icon" type="button" uiRipple (click)="_location.back()">
         <i class="material-icons">arrow_back</i>
       </button>
-      <span class="title">Distribuição uniforme</span>
+      <span class="title">Distribuição Uniforme</span>
     </ui-toolbar>
     <ui-card-content>
       <form #form="ngForm" class="ui-validate on-dirty on-submit">
@@ -13,11 +13,11 @@
           <ui-input-container>
             <input id="intervaloA" #intervaloA="ngModel" type="number" [(ngModel)]="info.intervaloA" uiInput
                    name="intervaloA" required>
-            <label for="intervaloA">Intervalo A</label>
+            <label for="intervaloA">Ponto Máximo</label>
             <div class="ui-messages">
               <div *ngIf="intervaloA.errors && intervaloA.dirty">
                 <div class="ui-message error" [hidden]="!intervaloA.pristine && !intervaloA.errors.required">
-                  Digite o intervalo A
+                  Digite o Ponto Máximo
                 </div>
               </div>
             </div>
@@ -25,11 +25,11 @@
           <ui-input-container>
             <input id="intervaloB" #intervaloB="ngModel" type="number" [(ngModel)]="info.intervaloB" uiInput
                    name="intervaloB" required>
-            <label for="intervaloB">Intervalo B</label>
+            <label for="intervaloB">Ponto Mínimo</label>
             <div class="ui-messages">
               <div *ngIf="intervaloB.errors && intervaloB.dirty">
                 <div class="ui-message error" [hidden]="!intervaloB.pristine && !intervaloB.errors.required">
-                  Digite o intervalo B
+                  Digite o Ponto Mínimo
                 </div>
               </div>
             </div>

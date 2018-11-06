@@ -19,11 +19,11 @@
         <div class="ui-flex-container break-on-s840">
           <ui-input-container>
             <input id="x" #x="ngModel" type="number" [(ngModel)]="info.x" uiInput name="x" required>
-            <label for="x">X</label>
+            <label for="x">Variável Independente (X)</label>
             <div class="ui-messages">
               <div *ngIf="x.errors && x.dirty">
                 <div class="ui-message error" [hidden]="!x.pristine && !x.errors.required">
-                  Digite o X
+                  Digite a Variável Independente (X)
                 </div>
               </div>
             </div>
@@ -31,7 +31,7 @@
           <ui-input-container>
             <input id="y" #y="ngModel" type="number" [(ngModel)]="info.y" uiInput name="y" required
                    (keydown.enter)="addInfo(form, info)">
-            <label for="y">Y</label>
+            <label for="y">Variável Dependente (Y)</label>
             <div class="icon">
               <button class="ui-button icon flat" type="button" (click)="addInfo(form, info)"
                       uiRipple>
@@ -41,7 +41,7 @@
             <div class="ui-messages">
               <div *ngIf="y.errors && y.dirty">
                 <div class="ui-message error" [hidden]="!y.pristine && !y.errors.required">
-                  Digite o Y
+                  Digite a Variável Dependente (Y)
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@
         </td>
       </tr>
       <tr *ngIf="list && !list.length">
-        <td colspan="3" style="text-align: center;">Não existem informações</td>
+        <td colspan="3" style="text-align: center;">Sem informações para serem exibidas</td>
       </tr>
       </tbody>
 

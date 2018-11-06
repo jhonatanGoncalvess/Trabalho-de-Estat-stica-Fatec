@@ -48,7 +48,7 @@
           <ui-option-container class="v-space-4 b-space-16">
             <ui-option class="primary">
               <input name="legenda" type="checkbox" [(ngModel)]="info.ordinal" [checked]="info.ordinal">
-              <span>Ordinal</span>
+              <span>População</span>
             </ui-option>
           </ui-option-container>
 
@@ -71,7 +71,7 @@
                        [(ngModel)]="info.tipoDeVariavel" [options]="selectTipoVariavel" value="id" label="nome"
                        uiInput></ui-select>
             <label for="tipoDeVariavel">
-              Tipo de variavel
+              Tipo de Variável
             </label>
           </ui-input-container>
         </div>
@@ -81,7 +81,7 @@
                    (focus)="focus = DataInsertHasFocus;" (blur)="focus = DataInsertHasFocus"
                    [persistPlaceholder]="DataInsertHasFocus" placeholder="Pressione enter para inserir"
                    (keydown.enter)="insertData(info.currentDado)">
-            <label for="dado">Dado</label>
+            <label for="dado">Entrada de Dados</label>
             <div class="icon">
               <button class="ui-button icon flat" type="button" (click)="openFile()"
                       uiRipple>

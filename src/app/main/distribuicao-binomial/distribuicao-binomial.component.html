@@ -14,7 +14,7 @@
           <ui-input-container>
             <input id="totalProb" #totalProb="ngModel" type="number" [(ngModel)]="info.totalProb" uiInput
                    name="totalProb" required>
-            <label for="totalProb">Total de probabilidades</label>
+            <label for="totalProb">Tamanho da amostra(n)</label>
             <div class="ui-messages">
               <div *ngIf="totalProb.errors && totalProb.dirty">
                 <div class="ui-message error" [hidden]="!totalProb.pristine && !totalProb.errors.required">
@@ -27,7 +27,7 @@
           <ui-input-container>
             <input id="probSucess" #probSucess="ngModel" type="number" [(ngModel)]="info.probSucess" uiInput
                    name="probSucess" required>
-            <label for="probSucess">Probabilidade de Sucesso</label>
+            <label for="probSucess">Sucesso(p)</label>
             <div class="ui-messages">
               <div *ngIf="probSucess.errors && probSucess.dirty">
                 <div class="ui-message error" [hidden]="!probSucess.pristine && !probSucess.errors.required">
@@ -41,7 +41,7 @@
             <input id="probFracasso" #probFracasso="ngModel" type="number" [(ngModel)]="info.probFracasso" uiInput
                    name="probFracasso"
                    required>
-            <label for="probFracasso">Probabilidade de Fracasso</label>
+            <label for="probFracasso">Fracasso(q)</label>
             <div class="ui-messages">
               <div *ngIf="probFracasso.errors && probFracasso.dirty">
                 <div class="ui-message error" [hidden]="!probFracasso.pristine && !probFracasso.errors.required">
@@ -57,7 +57,7 @@
           <ui-input-container>
             <input id="totalSucess" #totalSucess="ngModel" type="number" [(ngModel)]="info.totalSucess" uiInput
                    name="totalSucess" required>
-            <label for="totalSucess">Total de sucessos desejados</label>
+            <label for="totalSucess">Evento(k)</label>
             <div class="ui-messages">
               <div *ngIf="totalSucess.errors && totalSucess.dirty">
                 <div class="ui-message error" [hidden]="!totalSucess.pristine && !totalSucess.errors.required">
