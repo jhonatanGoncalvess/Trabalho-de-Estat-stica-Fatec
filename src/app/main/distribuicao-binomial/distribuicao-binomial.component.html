@@ -4,7 +4,7 @@
       <button class="ui-button flat icon" type="button" uiRipple (click)="_location.back()">
         <i class="material-icons">arrow_back</i>
       </button>
-      <span class="title">Distribuição binomial</span>
+      <span class="title">Distribuição Binomial</span>
     </ui-toolbar>
     <ui-card-content>
       <form #form="ngForm" class="ui-validate on-dirty on-submit">
@@ -14,11 +14,11 @@
           <ui-input-container>
             <input id="totalProb" #totalProb="ngModel" type="number" [(ngModel)]="info.totalProb" uiInput
                    name="totalProb" required>
-            <label for="totalProb">Tamanho da amostra(n)</label>
+            <label for="totalProb">Tamanho da Amostra(n)</label>
             <div class="ui-messages">
               <div *ngIf="totalProb.errors && totalProb.dirty">
                 <div class="ui-message error" [hidden]="!totalProb.pristine && !totalProb.errors.required">
-                  Digite o Total de probabilidades
+                  Digite o Tamanho da Amostra
                 </div>
               </div>
             </div>
@@ -31,7 +31,7 @@
             <div class="ui-messages">
               <div *ngIf="probSucess.errors && probSucess.dirty">
                 <div class="ui-message error" [hidden]="!probSucess.pristine && !probSucess.errors.required">
-                  Digite o valor de "Probabilidade de Sucesso"
+                  Digite o valor do "Sucesso"
                 </div>
               </div>
             </div>
@@ -45,7 +45,7 @@
             <div class="ui-messages">
               <div *ngIf="probFracasso.errors && probFracasso.dirty">
                 <div class="ui-message error" [hidden]="!probFracasso.pristine && !probFracasso.errors.required">
-                  Digite o valor de "Probabilidade de Fracasso"
+                  Digite o valor do "Fracasso"
                 </div>
               </div>
             </div>
@@ -61,7 +61,7 @@
             <div class="ui-messages">
               <div *ngIf="totalSucess.errors && totalSucess.dirty">
                 <div class="ui-message error" [hidden]="!totalSucess.pristine && !totalSucess.errors.required">
-                  Digite o Total de sucessos desejados
+                  Digite o Evento
                 </div>
               </div>
             </div>
