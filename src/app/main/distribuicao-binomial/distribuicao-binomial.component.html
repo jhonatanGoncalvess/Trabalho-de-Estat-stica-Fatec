@@ -69,7 +69,7 @@
 
           <ui-input-container>
             <input id="pelomenos" #pelomenos="ngModel" type="number" [(ngModel)]="info.pelomenos" uiInput
-                   name="pelomenos" required>
+                   name="pelomenos">
             <label for="pelomenos">Pelo Menos</label>
             <div class="ui-messages">
               <div *ngIf="pelomenos.errors && pelomenos.dirty">
@@ -81,7 +81,7 @@
           </ui-input-container>
 
           <ui-input-container>
-            <input id="maximo" #maximo="ngModel" type="number" [(ngModel)]="info.maximo" uiInput name="maximo" required>
+            <input id="maximo" #maximo="ngModel" type="number" [(ngModel)]="info.maximo" uiInput name="maximo">
             <label for="maximo">No Máximo</label>
             <div class="ui-messages">
               <div *ngIf="maximo.errors && maximo.dirty">

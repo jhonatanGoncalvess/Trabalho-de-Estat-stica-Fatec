@@ -76,11 +76,11 @@ export class CorrelacaoRegressaoService {
 
   nivelCorrelacao(percent) {
     if (percent >= 0 && percent < 0.3) {
-      return 'Inevistente a muito fraca';
+      return 'Inexistente a Muito fraca';
     } else if (percent >= 0.3 && percent < 0.6) {
-      return 'Muita fraca a média';
+      return 'Muita fraca a Média';
     } else {
-      return 'Média a forte';
+      return 'Média a Forte';
     }
   }
 
